@@ -141,3 +141,42 @@
     font-size: 14px;
   }
 }
+
+/* ===========================
+   MENU ITEM IMAGE (EDITORIAL)
+   =========================== */
+
+.menu-item-image-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.menu-item-image {
+  width: 180px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  opacity: 0.92;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-item-image:hover {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .menu-item-image {
+    width: 160px;
+  }
+}
+
+@media (max-width: 450px) {
+  .menu-item-image {
+    width: 140px;
+  }
+}
+
+

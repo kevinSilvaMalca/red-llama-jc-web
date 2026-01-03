@@ -1,74 +1,108 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/CardMenu.css';
-import { DataContext } from '../context/Context';
-import Spinner from '../components/Spinner';
-import CategoryPanel from '../components/CategoryPanel';
+
+import MenuService from '../services/menu.service';
+import { mapMenuByCategory } from '../mappers/menu.mapper';
 
 const CardMenu = () => {
-  const { categories, loading } = useContext(DataContext);
-  console.log('CATEGORIES', categories);
+  const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const [filteredMenu, setFilteredMenu] = useState([]);
 
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
-    setIsPanelOpen(false);
-  };
   useEffect(() => {
-    setFilteredMenu(
-      selectedCategory === 'All'
-        ? categories
-        : [categories.find((category) => category.name === selectedCategory)] ||
-            [],
-    );
-  }, [categories, selectedCategory]);
+    const fetchMenu = async () => {
+      try {
+        const data = await MenuService.getAll();
+        const mappedCategories = mapMenuByCategory(data);
+        setCategories(mappedCategories);
+      } catch (error) {
+        console.error('Error loading menu:', error);
+      }
+    };
 
-  if (loading) return <Spinner />;
+    fetchMenu();
+  }, []);
+
+  const filteredMenu =
+    selectedCategory === 'All'
+      ? categories
+      : categories.filter((cat) => cat.name === selectedCategory);
+
   return (
     <div className="pt-2 md:pt-0">
+
+      {/* Category toggle (mobile) */}
       <button
         className="category-button-panel card-menu-button text-[18]"
-        onClick={() => setIsPanelOpen(true)}
+        onClick={() => setIsPanelOpen(!isPanelOpen)}
       >
         Categories
       </button>
 
+      {/* Category panel */}
       {isPanelOpen && (
-        <CategoryPanel
-          categories={[...categories, { id: 0, name: 'All' }]}
-          onSelectCategory={handleCategorySelect}
-          onClose={() => setIsPanelOpen(false)}
-          isOpen={isPanelOpen}
-        />
+        <div className="category-panel">
+          <button onClick={() => setSelectedCategory('All')}>
+            All
+          </button>
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setSelectedCategory(cat.name)}
+            >
+              {cat.name}
+            </button>
+          ))}
+        </div>
       )}
 
+      {/* Menu content */}
       {filteredMenu.map((category) => (
         <div key={category.id} className="mb-16">
+
           <h2 className="menu-category-title uppercase font-garamond text-white-full mb-4 md:mb-8 lg:mb-12">
             {category.name}
           </h2>
+
           <div className="menu-category-products">
             <ul className="menu-category-list masonry-grid">
               {category.items.map((item) => (
                 <li
-                  className="menu-category-item masonry-item text-center mb-6 md:mb-8 lg:mb-12"
                   key={item.id}
+                  className="menu-category-item masonry-item text-center mb-6 md:mb-8 lg:mb-12"
                 >
-                  <h3 className="menu-category-item__title mb-1 sm:mb-2 md:mb-3 lg:mb-4">
+                  {/* IMAGE (optional, elegant) */}
+                  {item.imageUrl && (
+                    <div className="menu-item-image-wrapper">
+                      <img
+                        src={item.imageUrl}
+                        alt={item.title}
+                        className="menu-item-image"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+
+                  <h3 className="menu-category-item__title mb-2">
                     <span className="menu-category-item__title__name uppercase font-larsseit">
-                      {item.name}{' '}
+                      {item.title}
                     </span>
                   </h3>
-                  <p
-                    className="menu-category-item__description w-full font-cormorant mb-2 sm:mb-3 md:mb-4 lg:mb-5"
-                    dangerouslySetInnerHTML={{ __html: item.description }}
-                  />
-                  <span className="price text-white-full">${item.price}</span>
+
+                  {item.description && (
+                    <p className="menu-category-item__description font-cormorant mb-3">
+                      {item.description}
+                    </p>
+                  )}
+
+                  <span className="price text-white-full">
+                    ${item.price}
+                  </span>
                 </li>
               ))}
             </ul>
           </div>
+
         </div>
       ))}
     </div>

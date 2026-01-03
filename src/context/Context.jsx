@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect } from 'react';
 import CategoryService from '../services/category.service';
+import PromoService from '../services/promo.service';
 import PropTypes from 'prop-types';
 import { URL_BASE } from '../services/environment';
-import PromoService from '../services/promo.service';
 
 export const DataContext = createContext();
 
@@ -13,10 +13,9 @@ const DataProvider = ({ children, onServicesLoaded }) => {
   const [loadingPromo, setLoadingPromo] = useState(true);
 
   const transformData = (data) => {
-    const transformedMenu = {
-      categories: [],
-    };
+    const transformedMenu = { categories: [] };
     const categoryMap = {};
+
     data.forEach((item) => {
       const product = {
         id: item.id,
@@ -25,22 +24,25 @@ const DataProvider = ({ children, onServicesLoaded }) => {
         price: item.attributes.price,
         url: item.attributes.image?.data
           ? `${URL_BASE}${item.attributes.image.data.attributes.url}`
-          : 'https://via.placeholder.com/150',
+          : 'https://via.placeholder.com/300x200?text=No+Image',
       };
 
-      const categoryId = item.attributes.category.data.id;
-      const categoryName = item.attributes.category.data.attributes.name;
+      const categoryData = item.attributes.category?.data;
+      if (!categoryData) return;
+
+      const categoryId = categoryData.id;
+      const categoryName = categoryData.attributes.name;
 
       if (!categoryMap[categoryId]) {
         categoryMap[categoryId] = {
           id: categoryId,
           name: categoryName,
-          description:
-            item.attributes.category.data.attributes.description || '',
+          description: categoryData.attributes.description || '',
           items: [],
         };
         transformedMenu.categories.push(categoryMap[categoryId]);
       }
+
       categoryMap[categoryId].items.push(product);
     });
 
@@ -52,39 +54,45 @@ const DataProvider = ({ children, onServicesLoaded }) => {
 
     const fetchCategories = async () => {
       try {
-        const data = await CategoryService.getAll();
-        const transformCategories = transformData(data.data);
+        const response = await CategoryService.getAll();
+        const transformed = transformData(response.data);
         if (isMounted) {
-          setCategories(transformCategories.categories);
+          setCategories(transformed.categories);
           setLoadingCategories(false);
         }
       } catch (error) {
-        console.log('Error al obtener las categorías', error);
+        console.error('Error fetching categories', error);
         setLoadingCategories(false);
       }
     };
+
     const fetchPromo = async () => {
       try {
         const promoData = await PromoService.getData();
-        const data = promoData.data.attributes.image.data.attributes.formats;
-        const flyer = {
-          large: `${URL_BASE}${data?.large?.url}`,
-          medium: `${URL_BASE}${data?.medium?.url}`,
-          small: `${URL_BASE}${data?.small?.url}`,
-          thumbnail: `${URL_BASE}${data?.thumbnail?.url}`,
-        };
+        const formats =
+          promoData?.data?.attributes?.image?.data?.attributes?.formats;
+
+        const flyer = formats
+          ? {
+              large: `${URL_BASE}${formats.large?.url}`,
+              medium: `${URL_BASE}${formats.medium?.url}`,
+              small: `${URL_BASE}${formats.small?.url}`,
+              thumbnail: `${URL_BASE}${formats.thumbnail?.url}`,
+            }
+          : null;
+
         if (isMounted) {
           setPromo(flyer);
           setLoadingPromo(false);
         }
       } catch (error) {
-        console.log('Error al obtener los datos', error);
+        console.error('Error fetching promo', error);
         setLoadingPromo(false);
       }
     };
 
-    fetchPromo();
     fetchCategories();
+    fetchPromo();
 
     return () => {
       isMounted = false;
@@ -93,13 +101,20 @@ const DataProvider = ({ children, onServicesLoaded }) => {
 
   useEffect(() => {
     if (!loadingCategories && !loadingPromo) {
-      onServicesLoaded();
+      // ✅ SOLO LLAMAMOS SI EXISTE
+      if (typeof onServicesLoaded === 'function') {
+        onServicesLoaded();
+      }
     }
   }, [loadingCategories, loadingPromo, onServicesLoaded]);
 
   return (
     <DataContext.Provider
-      value={{ categories, promo, loading: loadingCategories || loadingPromo }}
+      value={{
+        categories,
+        promo,
+        loading: loadingCategories || loadingPromo,
+      }}
     >
       {children}
     </DataContext.Provider>
@@ -108,7 +123,7 @@ const DataProvider = ({ children, onServicesLoaded }) => {
 
 DataProvider.propTypes = {
   children: PropTypes.node,
-  onServicesLoaded: PropTypes.func.isRequired,
+  onServicesLoaded: PropTypes.func, // ✅ YA NO ES OBLIGATORIO
 };
 
 export default DataProvider;
