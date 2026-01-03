@@ -1,18 +1,9 @@
-.masonry-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 72%;
-  margin-right: auto;
-  margin-left: auto;
-  column-gap: 40px;
+/* ===== CONTAINER ===== */
+.card-menu-container {
+  padding-top: 20px;
 }
 
-.masonry-item {
-  break-inside: avoid;
-  margin-bottom: 20px;
-}
-
+/* ===== CATEGORY TITLE ===== */
 .menu-category-title {
   display: flex;
   align-items: center;
@@ -20,132 +11,35 @@
   text-align: center;
   font-size: 36px;
   font-weight: 400;
-  position: relative;
-  margin: 40px 0;
-  margin-bottom: 10px;
+  margin: 60px auto 40px;
   width: 60%;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-.menu-category-title:before,
-.menu-category-title:after {
+.menu-category-title::before,
+.menu-category-title::after {
   content: '';
   flex: 1;
   border-bottom: 1px solid var(--white-full);
-  margin: 0 40px;
+  margin: 0 32px;
 }
 
-.menu-category-list {
-  list-style: none;
+/* ===== GRID ===== */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 40px; /* ⬅️ menos aire */
+  width: 62%;     /* ⬅️ más compacto */
+  margin: 0 auto;
   padding: 0;
+  list-style: none;
 }
 
-.menu-category-item {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.menu-category-item__title__name {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 39px;
-  letter-spacing: 6px;
-}
-.menu-category-item__description {
-  font-size: 20px;
-  font-weight: 200;
-  line-height: 36px;
+/* ===== ITEM ===== */
+.menu-item {
   text-align: center;
 }
 
-.price {
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.category-button-panel {
-  width: 280px;
-}
-
-@media (min-width: 768px) {
-  .menu-category-item {
-    width: calc(50% - 40px);
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-
-  .menu-category-item:nth-child(odd) {
-    margin-left: 0;
-  }
-
-  .menu-category-item:nth-child(even) {
-    margin-right: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .menu-category-title {
-    font-size: 28px;
-    margin-top: 20px;
-  }
-  .menu-category-item__title__name {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 32px;
-  }
-  .menu-category-item__description {
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 28px;
-  }
-  .price {
-    font-size: 16px;
-  }
-  .menu-category-title:before,
-  .menu-category-title:after {
-    margin: 0 10px;
-  }
-
-  .category-button-panel {
-    width: 240px;
-  }
-}
-
-@media (max-width: 450px) {
-  .menu-category-title {
-    font-size: 22px;
-    margin-top: 10px;
-  }
-  .menu-category-item__title__name {
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 28px;
-  }
-  .menu-category-item__description {
-    font-size: 16px;
-    font-weight: 200;
-    line-height: 20px;
-  }
-  .price {
-    font-size: 14px;
-  }
-  .menu-category-title:before,
-  .menu-category-title:after {
-    margin: 0 5px;
-  }
-
-  .category-button-panel {
-    width: 200px;
-    font-size: 14px;
-  }
-}
-
-/* ===========================
-   MENU ITEM IMAGE (EDITORIAL)
-   =========================== */
-
+/* ===== IMAGE ===== */
 .menu-item-image-wrapper {
   display: flex;
   justify-content: center;
@@ -153,11 +47,11 @@
 }
 
 .menu-item-image {
-  width: 180px;
+  width: 140px; /* ⬅️ antes 180 */
   max-width: 100%;
   height: auto;
   border-radius: 6px;
-  opacity: 0.92;
+  opacity: 0.9;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -166,17 +60,158 @@
   transform: scale(1.02);
 }
 
-/* Mobile adjustments */
+/* ===== TEXT ===== */
+.menu-item-title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  margin-bottom: 8px;
+}
+
+.menu-item-description {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 28px;
+  max-width: 90%;
+  margin: 0 auto 6px;
+}
+
+.menu-item-price {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* ===== CATEGORY BUTTON ===== */
+.category-button-panel {
+  width: 240px;
+  margin: 0 auto 32px;
+}
+
+/* ===== TABLET ===== */
+@media (max-width: 1024px) {
+  .menu-grid {
+    width: 82%;
+    gap: 40px 48px;
+  }
+}
+
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+    width: 90%;
+    gap: 36px;
+  }
+
+  .menu-category-title {
+    font-size: 30px;          /* ⬅️ antes 36 */
+    margin: 48px auto 32px;  /* ⬅️ menos vertical */
+    width: 55%;
+  }
+
+  .menu-category-title::before,
+  .menu-category-title::after {
+    margin: 0 12px;
+  }
+
+  .menu-item-title {
+    font-size: 14px;
+    letter-spacing: 3px;
+  }
+
+  .menu-item-description {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .menu-item-price {
+    font-size: 15px;
+  }
+
   .menu-item-image {
-    width: 160px;
+    width: 150px;
   }
 }
 
-@media (max-width: 450px) {
-  .menu-item-image {
-    width: 140px;
+
+/* ===========================
+   CATEGORIES BAR (BRAND ALIGNED)
+   =========================== */
+
+.categories-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin: 24px auto 48px;
+  max-width: 80%;
+}
+
+/* Category chip */
+.category-chip {
+  padding: 8px 20px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: transparent;
+  color: var(--white-full);
+  border: 1px solid var(--emphasys-light);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Hover (warm, elegant) */
+.category-chip:hover {
+  background-color: var(--emphasys-light);
+  color: var(--dark);
+  border-color: var(--emphasys-light);
+  transform: translateY(-1px);
+}
+
+/* Active (brand red) */
+.category-chip.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: var(--white-full);
+  box-shadow: 0 4px 14px rgba(223, 0, 1, 0.35);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .categories-bar {
+    max-width: 95%;
+    gap: 10px;
+  }
+
+  .category-chip {
+    font-size: 12px;
+    padding: 6px 14px;
+    letter-spacing: 1.5px;
   }
 }
 
+/* ===========================
+   FINE DINING SEPARATORS
+   =========================== */
 
+.menu-item-separator {
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--emphasys-light),
+    transparent
+  );
+  margin: 22px auto 0;
+  opacity: 0.8;
+}
+
+/* ===== LOADING ===== */
+.menu-loading {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

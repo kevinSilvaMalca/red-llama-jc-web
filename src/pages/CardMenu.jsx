@@ -3,11 +3,12 @@ import '../styles/CardMenu.css';
 
 import MenuService from '../services/menu.service';
 import { mapMenuByCategory } from '../mappers/menu.mapper';
+import Spinner from '../components/Spinner';
 
 const CardMenu = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchMenu = async () => {
@@ -17,93 +18,97 @@ const CardMenu = () => {
         setCategories(mappedCategories);
       } catch (error) {
         console.error('Error loading menu:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchMenu();
   }, []);
 
-  const filteredMenu =
+  if (loading) {
+    return (
+      <div className="menu-loading">
+        <Spinner />
+      </div>
+    );
+  }
+
+  const filteredCategories =
     selectedCategory === 'All'
       ? categories
       : categories.filter((cat) => cat.name === selectedCategory);
 
   return (
-    <div className="pt-2 md:pt-0">
+    <div className="card-menu-container">
 
-      {/* Category toggle (mobile) */}
-      <button
-        className="category-button-panel card-menu-button text-[18]"
-        onClick={() => setIsPanelOpen(!isPanelOpen)}
-      >
-        Categories
-      </button>
+      {/* ===== CATEGORIES BAR ===== */}
+      <div className="categories-bar">
+        <button
+          className={`category-chip ${selectedCategory === 'All' ? 'active' : ''}`}
+          onClick={() => setSelectedCategory('All')}
+        >
+          All
+        </button>
 
-      {/* Category panel */}
-      {isPanelOpen && (
-        <div className="category-panel">
-          <button onClick={() => setSelectedCategory('All')}>
-            All
+        {categories.map((cat) => (
+          <button
+            key={cat.id}
+            className={`category-chip ${selectedCategory === cat.name ? 'active' : ''}`}
+            onClick={() => setSelectedCategory(cat.name)}
+          >
+            {cat.name}
           </button>
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.name)}
-            >
-              {cat.name}
-            </button>
-          ))}
-        </div>
-      )}
+        ))}
+      </div>
 
-      {/* Menu content */}
-      {filteredMenu.map((category) => (
-        <div key={category.id} className="mb-16">
+      {/* ===== MENU ===== */}
+      {filteredCategories.map((category) => (
+        <section key={category.id} className="menu-section">
 
-          <h2 className="menu-category-title uppercase font-garamond text-white-full mb-4 md:mb-8 lg:mb-12">
+          <h2 className="menu-category-title">
             {category.name}
           </h2>
 
-          <div className="menu-category-products">
-            <ul className="menu-category-list masonry-grid">
-              {category.items.map((item) => (
-                <li
-                  key={item.id}
-                  className="menu-category-item masonry-item text-center mb-6 md:mb-8 lg:mb-12"
-                >
-                  {/* IMAGE (optional, elegant) */}
-                  {item.imageUrl && (
-                    <div className="menu-item-image-wrapper">
-                      <img
-                        src={item.imageUrl}
-                        alt={item.title}
-                        className="menu-item-image"
-                        loading="lazy"
-                      />
-                    </div>
-                  )}
+          <ul className="menu-grid">
+            {category.items.map((item, index) => (
+              <li key={item.id} className="menu-item">
 
-                  <h3 className="menu-category-item__title mb-2">
-                    <span className="menu-category-item__title__name uppercase font-larsseit">
-                      {item.title}
-                    </span>
-                  </h3>
+                {item.imageUrl && (
+                  <div className="menu-item-image-wrapper">
+                    <img
+                      src={item.imageUrl}
+                      alt={item.title}
+                      className="menu-item-image"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
 
-                  {item.description && (
-                    <p className="menu-category-item__description font-cormorant mb-3">
-                      {item.description}
-                    </p>
-                  )}
+                <h3 className="menu-item-title">
+                  {item.title}
+                </h3>
 
-                  <span className="price text-white-full">
-                    ${item.price}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+                {item.description && (
+                  <p className="menu-item-description">
+                    {item.description}
+                  </p>
+                )}
 
-        </div>
+                <div className="menu-item-price">
+                  ${item.price}
+                </div>
+
+                {/* Fine dining separator */}
+                {index !== category.items.length - 1 && (
+                  <div className="menu-item-separator" />
+                )}
+
+              </li>
+            ))}
+          </ul>
+
+        </section>
       ))}
     </div>
   );
