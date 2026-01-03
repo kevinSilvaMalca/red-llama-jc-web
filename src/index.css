@@ -1,0 +1,117 @@
+@import url('./styles/variables.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Noto Serif Display';
+  src: url('/src/assets/fonts/noto-serif/NotoSerifDisplay-VariableFont_wdth,wght.ttf')
+    format('truetype');
+  font-weight: 300 900; /* Rango de pesos disponibles */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Serif Display';
+  src: url('/src/assets/fonts/noto-serif/NotoSerifDisplay-Italic-VariableFont_wdth,wght.ttf')
+    format('truetype');
+  font-weight: 300 900; /* Rango de pesos disponibles */
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'April June';
+  src: url('/src/assets/fonts/april-june/AprilJune-Regular.woff2')
+      format('woff2'),
+    url('/src/assets/fonts/april-june/AprilJune-Regular.woff') format('woff'),
+    url('/src/assets/fonts/april-june/AprilJune-Regular.ttf') format('truetype'),
+    url('/src/assets/fonts/april-june/AprilJune-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('/src/assets/fonts/april-june/AprilJune-Regular.svg#AprilJune')
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Arual Light';
+  src: url('/src/assets/fonts/arual/ArualLight-Regular.woff2') format('woff2'),
+    url('/src/assets/fonts/arual/ArualLight-Regular.woff') format('woff'),
+    url('/src/assets/fonts/arual/ArualLight-Regular.ttf') format('truetype'),
+    url('/src/assets/fonts/arual/ArualLight-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('/src/assets/fonts/arual/ArualLight-Regular.svg#ArualLight')
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant';
+  src: url('/src/assets/fonts/cormorant/CormorantRegular-Italic.woff2')
+      format('woff2'),
+    url('/src/assets/fonts/cormorant/CormorantRegular-Italic.woff')
+      format('woff'),
+    url('/src/assets/fonts/cormorant/CormorantRegular-Italic.ttf')
+      format('truetype'),
+    url('/src/assets/fonts/cormorant/CormorantRegular-Italic.eot?#iefix')
+      format('embedded-opentype'),
+    url('/src/assets/fonts/cormorant/CormorantRegular-Italic.svg#CormorantRegular')
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant Garamond';
+  src: url('/src/assets/fonts/cormorant-garamond/CormorantGaramond-Regular.woff2')
+      format('woff2'),
+    url('/src/assets/fonts/cormorant-garamond/CormorantGaramond-Regular.woff')
+      format('woff'),
+    url('/src/assets/fonts/cormorant-garamond/CormorantGaramond-Regular.ttf')
+      format('truetype'),
+    url('/src/assets/fonts/cormorant-garamond/CormorantGaramond-Regular.eot?#iefix')
+      format('embedded-opentype'),
+    url('/src/assets/fonts/cormorant-garamond/CormorantGaramond-Regular.svg#CormorantGaramond')
+      format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Larsseit';
+  src: url('/src/assets/fonts/larsseit/Larsseit.woff2') format('woff2'),
+    url('/src/assets/fonts/larsseit/Larsseit.woff') format('woff'),
+    url('/src/assets/fonts/larsseit/Larsseit.ttf') format('truetype'),
+    url('/src/assets/fonts/larsseit/Larsseit.eot?#iefix')
+      format('embedded-opentype'),
+    url('/src/assets/fonts/larsseit/Larsseit.svg#Larsseit') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Noto Serif Display', serif;
+  background-color: var(--dark);
+  color: var(--white-full);
+}
+
+h1 {
+  font-family: 'April June';
+  font-size: 4rem;
+}
+ul li {
+  color: var(--white-full);
+}
+.no-scroll {
+  overflow: hidden;
+}
+.text-error {
+  color: var(--primary-light);
+  font-size: 14px;
+}

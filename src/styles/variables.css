@@ -1,0 +1,14 @@
+:root {
+  --primary: #df0001;
+  --primary-light: #d16868;
+  --secondary: #a142fa;
+  --accent: #43fc61;
+  --dark: #0d0d0d;
+  --white-full: #ffffff;
+  --emphasys: #6f4a29;
+  --emphasys-light: #c59d5f;
+  --custom: #181818;
+  --bg-card: #191919;
+  --bg-btn-hover: #555555;
+  --bg-btn-active: #777777;
+}

@@ -1,0 +1,186 @@
+.home-content {
+  /* background-image: url('../assets/images/home-bg.png'); */
+}
+.home-content .home-section-banner {
+  height: 890px;
+  /* width: 80%; */
+  /* padding-left: 10%;
+  padding-right: 10%; */
+  background-image: url('https://admin.thetriplethree333.com/uploads/medium_fondo_Principal_Negro_923e401d58.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.banner-text {
+  margin-top: -100px;
+  margin-left: 148px;
+}
+
+.home-button {
+  border: 1px solid var(--white-full);
+  padding: 10px 48px;
+  height: 44px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 900;
+}
+.home-button.home-about-section {
+  margin-right: -40px;
+}
+
+.home-about-images {
+  width: 100%;
+  display: flex;
+}
+.home-about-images__left {
+  width: 50%;
+  height: 450px;
+  background-image: url('https://admin.thetriplethree333.com/uploads/Fondo_Primario_b024cdb7be.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.home-about-images__right {
+  width: 50%;
+  height: 450px;
+  background-image: url('https://admin.thetriplethree333.com/uploads/angelonthewall_2aad0428af.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.home-section-attendance {
+  width: 100%;
+  display: flex;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  background: transparent;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: black;
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  color: red;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.home-section-menu {
+  margin-bottom: 120px;
+}
+
+@media (max-width: 1024px) {
+  .social {
+    display: none;
+  }
+  .header-button {
+    display: none;
+  }
+  .home-about-images {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 8px;
+  }
+  .home-about-images__left {
+    width: 90%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .home-about-images__right {
+    width: 90%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-content {
+  }
+  .nav {
+    display: flex;
+  }
+  .hamburger-menu {
+    display: none;
+  }
+
+  .home-button {
+    font-size: 14px;
+  }
+
+  .home-content .home-section-banner {
+    background-image: url('https://admin.thetriplethree333.com/uploads/medium_fondo_Principal_Negro_923e401d58.png');
+    height: 490px;
+    opacity: 0.8;
+  }
+
+  .banner-text {
+    margin-top: 40px;
+    margin-left: 0;
+    width: 280px;
+  }
+
+  .home-button.home-about-section {
+    margin-right: 0;
+  }
+
+  .modal-close {
+    font-size: 20px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 450px) {
+  .modal-close {
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+  }
+}

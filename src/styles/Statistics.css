@@ -1,0 +1,15 @@
+.statistics-title {
+  width: 72%;
+  margin-top: 120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.statistics-item {
+  width: 270px;
+}
+.statistcts-item__value {
+  width: 100%;
+}
+.statistcts-item__name {
+  width: 100%;
+}

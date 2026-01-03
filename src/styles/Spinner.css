@@ -1,0 +1,14 @@
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Asegúrate de que el spinner esté centrado en toda la pantalla */
+  padding: 24px;
+  text-align: center;
+}
+
+.construction-message {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}

@@ -1,0 +1,43 @@
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.scroll-button {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s ease-in-out;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scroll-arrow-svg {
+  transform: translate(0, -20%) rotate(180deg);
+}
+.scroll-arrow-svg path {
+  fill: #ffffff;
+}
+
+.scroll-button:hover {
+  background-color: #555;
+}
+
+.scroll-button:active {
+  background-color: #777;
+}
+
+.scroll-to-top .scroll-button {
+  opacity: 1;
+}

@@ -1,0 +1,196 @@
+.header {
+  background-image: url('https://admin.thetriplethree333.com/uploads/header_bg_large_edfdefa1cb.png');
+  background-repeat: none;
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5rem;
+  padding: 16px 0;
+  height: 300px;
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  transition: background-image 0.3s ease, background-size 0.3s ease,
+    background-color 0.3s ease, height 0.3s ease; */
+}
+/* .header.scrolled {
+  background-image: none;
+  background-size: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 200px;
+}
+.header.scrolled .page-title {
+  display: none;
+} */
+
+.header-nav {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 56px;
+}
+
+.header-default {
+  background-color: #000;
+}
+
+.header-home {
+  background-image: none;
+  background: transparent;
+  /* position: fixed; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  /* transition: background-color 0.3s ease, box-shadow 0.3s ease; */
+}
+/* .header-home.scrolled {
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 200px;
+} */
+
+.logo-image {
+  width: 280px;
+  height: 140px;
+}
+
+.nav {
+  display: none;
+}
+
+.nav-open {
+  z-index: 3;
+  display: block;
+  background-color: var(--dark);
+  position: absolute;
+  top: 72px;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  padding-top: 100px;
+}
+.nav-open .nav-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.nav-open .nav-list .nav-list-item {
+  border-bottom: 1px solid var(--white-full);
+}
+
+.nav .nav-list {
+  list-style: none;
+  display: flex;
+  gap: 6px;
+}
+
+.nav .nav-list .nav-list-item {
+  line-height: 32px;
+  padding: 0 18px;
+  opacity: 0.8;
+}
+.nav-list-item {
+  cursor: pointer;
+}
+
+.social {
+  display: flex;
+  margin-right: -54px;
+}
+
+.social .facebook {
+  margin-right: 28px;
+}
+
+.header-button {
+  padding: 14px 48px;
+  border: 1px solid var(--white-full);
+  width: 172px;
+  height: 44px;
+  opacity: 0.8;
+}
+
+.hamburger-menu {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hamburger-line {
+  width: 25px;
+  height: 2px;
+  background-color: white;
+}
+
+.page-title {
+  flex-grow: 1;
+  text-align: center;
+  /* transition: display 0.3s ease; */
+}
+
+@media (max-width: 1400px) {
+  .header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .nav .nav-list .nav-list-item {
+    padding: 0 8px;
+  }
+  .social {
+    margin-right: 0px;
+  }
+  .social .facebook {
+    margin-right: 8px;
+  }
+
+  .header-button {
+    padding: 14px 28px;
+    width: 132px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .social {
+    display: none;
+  }
+  .header-button {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-image {
+    width: 116px;
+    height: 52px;
+  }
+  .header-nav {
+    margin-bottom: 76px;
+  }
+  .nav .nav-list .nav-list-item {
+    padding: 20px;
+    padding-left: 32px;
+    text-align: left;
+  }
+  .header-home.scrolled {
+    height: 100px;
+  }
+  .header.scrolled {
+    height: 120px;
+  }
+}
+
+@media (min-width: 768px) {
+  .nav {
+    display: flex;
+  }
+  .hamburger-menu {
+    display: none;
+  }
+}

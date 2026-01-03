@@ -1,0 +1,41 @@
+.attendance-hours-container {
+  width: 564px;
+  text-align: left;
+}
+.attendance-hours__item {
+  border-top: 1px dashed var(--white-full);
+  border-bottom: 1px dashed var(--white-full);
+}
+
+.attendance-location-container {
+  width: 564px;
+  text-align: left;
+}
+.attendance-location__item {
+  border-top: 1px dashed var(--white-full);
+  border-bottom: 1px dashed var(--white-full);
+}
+
+@media (max-width: 1440px) {
+  .attendance-container {
+    flex-direction: column;
+    row-gap: 72px;
+  }
+}
+@media (max-width: 1024px) {
+  .attendance-hours-container {
+    width: 480px;
+  }
+  .attendance-location-container {
+    width: 480px;
+  }
+}
+
+@media (max-width: 768px) {
+  .attendance-hours-container {
+    width: 280px;
+  }
+  .attendance-location-container {
+    width: 280px;
+  }
+}

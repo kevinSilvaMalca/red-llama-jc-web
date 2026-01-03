@@ -1,0 +1,12 @@
+.contactus-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding-top: 70px; */
+}
+.contactus-attendance {
+  margin-bottom: 64px;
+}
+.contactus-form {
+  margin-bottom: 0;
+}

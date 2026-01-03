@@ -1,0 +1,53 @@
+.footer-subscription {
+  margin-top: 148px;
+}
+
+.footer-content {
+  background-image: url(https://admin.thetriplethree333.com/uploads/footer_bg_large_8e5c855d19.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px;
+  padding-top: 52px;
+}
+.footer-social {
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-right: 92px;
+  margin-bottom: 80px;
+}
+.footer-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.image-with-bg {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  border-radius: 50%;
+}
+.image-with-glow {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+@media (max-width: 768px) {
+  .footer-subscription {
+    margin-top: 80px;
+  }
+
+  .footer-content {
+    background-image: url(https://admin.thetriplethree333.com/uploads/footer_bg_0441a16bf2.png);
+    height: 415px;
+  }
+  .footer-social.social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    column-gap: 20px;
+  }
+  .footer-logo {
+    margin-top: 120px;
+  }
+}

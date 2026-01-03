@@ -1,0 +1,116 @@
+.calendar-container {
+  padding: 16px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+.react-calendar {
+  background-color: #1a1a1a;
+  border: none;
+}
+
+.react-calendar__navigation button {
+  color: #ffffff;
+  background: none;
+}
+
+.react-calendar__month-view__weekdays {
+  text-transform: uppercase;
+}
+
+.react-calendar__tile {
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 10px 0;
+}
+
+.react-calendar__tile--active {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+.contact-image {
+  background-image: url('https://admin.thetriplethree333.com/uploads/contact_large_0a287e6b67.png');
+  background-size: cover;
+  width: 608px;
+  height: 1020px;
+}
+
+.contact-form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  margin-bottom: 36px;
+  width: 620px;
+}
+.contact-form-input {
+  border-bottom: 1px solid var(--white-full);
+  background-color: var(--dark);
+  width: 100%;
+}
+
+.modal-content.contact {
+  background-color: var(--bg-card);
+  height: 150px;
+  width: 420px;
+}
+
+@media (max-width: 1400px) {
+  .contact-image {
+    width: 400px;
+  }
+  .contact-form-group {
+    width: 400px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .contact-image {
+    width: 350px;
+  }
+  .contact-form-group {
+    width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-image {
+    height: 500px;
+  }
+  .contact-form-group {
+    width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .calendar-container {
+    padding: 4px;
+  }
+
+  .modal-content.contact {
+    width: 380px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 540px) {
+  .contact-image {
+    height: 480px;
+  }
+  .calendar-container {
+    padding: 3px;
+  }
+  .contact-info {
+    width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 450px) {
+  .modal-content.contact {
+    height: 120px;
+    width: 280px;
+    font-size: 12px;
+  }
+}

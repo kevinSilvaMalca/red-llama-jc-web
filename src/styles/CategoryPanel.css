@@ -1,0 +1,46 @@
+.category-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 640px;
+  height: 100%;
+  background-color: #333;
+  color: #fff;
+  z-index: 1000;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
+}
+
+.category-panel.open {
+  transform: translateX(0);
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 50px;
+}
+
+.category-item {
+  padding: 10px 0;
+  cursor: pointer;
+  font-size: 20px;
+  border-bottom: 1px solid #555;
+}
+
+.category-item:hover {
+  color: #ddd;
+}

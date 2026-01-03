@@ -1,0 +1,277 @@
+/* Contenedor de las secciones del menú */
+.menu-sections {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten si no caben */
+  justify-content: space-between; /* Espaciado entre elementos */
+  gap: 24px; /* Espaciado entre secciones */
+}
+
+/* Sección individual del menú */
+.menu-section {
+  flex: 1 1 calc(33.333% - 24px); /* Ocupa un tercio del ancho con espacio entre secciones */
+  text-align: center; /* Centrar contenido */
+  margin-bottom: 48px; /* Espaciado inferior entre secciones */
+}
+
+.menu-section h2 {
+  margin-bottom: 16px; /* Espaciado inferior del título */
+  color: var(--primary); /* Color del título */
+}
+
+/* Botones de descarga */
+.download-button {
+  background-color: #cd6666; /* Rojo fuerte */
+  color: var(--white-full); /* Texto blanco */
+  padding: 12px 24px; /* Espaciado interno */
+  border: none; /* Sin bordes */
+  border-radius: -4; /* Sin curvas */
+  font-size: 18px; /* Tamaño de fuente */
+  font-weight: 100; /* Peso de fuente */
+  cursor: pointer; /* Cursor de puntero */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
+  margin-top: 16px; /* Espaciado superior */
+  /*text-shadow: 0 0 1px #ffffff, 0 0 5px #ffffff;  Sombra de neón en el texto */
+}
+
+.download-button:hover {
+  background-color: #cc0000; /* Rojo más oscuro al pasar el mouse */
+  transform: scale(1.05); /* Efecto de agrandamiento al pasar el mouse */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .menu-sections {
+    flex-direction: column; /* Cambiar a disposición vertical */
+    gap: 32px; /* Espaciado entre secciones */
+  }
+
+  .menu-section {
+    flex: 1 1 100%; /* Cada sección ocupa todo el ancho */
+    margin-bottom: 32px; /* Reducir espaciado inferior */
+  }
+
+  .download-button {
+    width: 100%; /* Botón ocupa todo el ancho */
+    padding: 12px; /* Ajustar espaciado interno */
+  }
+}
+
+
+
+
+
+
+
+.category-download {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.category-button-panel {
+  padding: 12px;
+  width: 76%;
+  border: 1px solid var(--white-full);
+  color: var(--white-full);
+  background-color: var(--bg-card);
+  margin-bottom: 20px;
+}
+.our-menu__button.category-button-download {
+  background-color: var(--primary-light);
+}
+
+.categories-menu {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+.categories-menu::-webkit-scrollbar {
+  display: none; /* Safari y Chrome */
+}
+
+.category-button {
+  padding: 12px 24px;
+  margin-right: 10px;
+  white-space: nowrap;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  line-height: 30px;
+  color: var(--white-full);
+  cursor: pointer;
+}
+
+.category-button.active {
+  border-bottom: 2px solid var(--emphasys);
+}
+
+.category-button:hover {
+  color: var(--emphasys-light);
+}
+
+.our-menu .our-menu__img {
+  width: 100%;
+  max-width: 206px;
+  height: auto;
+  max-height: 164px;
+  border: 4px solid var(--emphasys);
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.our-menu__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 12px;
+}
+
+.our-menu__title {
+  border-bottom: 1px dashed var(--white-full);
+  margin-bottom: 16px;
+}
+
+.our-menu__title__name {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 6px;
+}
+
+.our-menu__title__price {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.our-menu__description .our-menu__description__paragraph {
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 36px;
+  text-align: center;
+}
+
+.our-menu__button {
+  padding: 12px 48px;
+  border: 1px solid var(--white-full);
+  font-weight: 900;
+  width: 200px;
+  height: 42px;
+}
+
+.content-cards {
+  display: flex;
+  flex-direction: column;
+  column-gap: 24px;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.our-menu__subscribe {
+  margin-bottom: 150px;
+}
+.our-menu__subscribe-input {
+  border: 1px solid var(--white-full);
+  background-color: var(--dark);
+  width: 560px;
+  height: 60px;
+  margin-right: 36px;
+  padding: 16px 32px;
+}
+.our-menu__subscribe-button {
+  width: 224px;
+  height: 60px;
+}
+
+@media (min-width: 768px) {
+  .our-menu .our-menu__img {
+    width: 100%;
+    height: 164px;
+    margin-bottom: 0;
+  }
+
+  .content-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .category-button-panel {
+    margin-bottom: 40px;
+  }
+  .categories-menu {
+    display: none;
+  }
+  .category-button {
+    font-size: 16px;
+    line-height: 28px;
+  }
+  .content-cards {
+    width: 76%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .our-menu__subscribe {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 132px;
+  }
+  .our-menu .our-menu__img {
+    max-width: 50%;
+    height: 164px;
+    margin-bottom: 16px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .our-menu__title__name {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 28px;
+  }
+  .our-menu__description .our-menu__description__paragraph {
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 20px;
+  }
+  .our-menu__title__price {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .our-menu__subscribe-input {
+    border: 1px solid var(--white-full);
+    width: 100%;
+    height: 60px;
+    margin-right: 0;
+  }
+  .our-menu__subscribe-button {
+    width: 100%;
+    height: 60px;
+  }
+}
+
+@media (max-width: 450px) {
+  .category-button-panel {
+    margin-bottom: 20px;
+  }
+  .our-menu {
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var(--bg-card);
+  }
+  .our-menu__title {
+    border-bottom: none;
+  }
+  .our-menu .our-menu__img {
+    max-width: 100%;
+  }
+}

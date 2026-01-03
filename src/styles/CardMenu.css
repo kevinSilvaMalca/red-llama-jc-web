@@ -1,0 +1,143 @@
+.masonry-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 72%;
+  margin-right: auto;
+  margin-left: auto;
+  column-gap: 40px;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 20px;
+}
+
+.menu-category-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 400;
+  position: relative;
+  margin: 40px 0;
+  margin-bottom: 10px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.menu-category-title:before,
+.menu-category-title:after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--white-full);
+  margin: 0 40px;
+}
+
+.menu-category-list {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-category-item {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.menu-category-item__title__name {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 39px;
+  letter-spacing: 6px;
+}
+.menu-category-item__description {
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 36px;
+  text-align: center;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.category-button-panel {
+  width: 280px;
+}
+
+@media (min-width: 768px) {
+  .menu-category-item {
+    width: calc(50% - 40px);
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .menu-category-item:nth-child(odd) {
+    margin-left: 0;
+  }
+
+  .menu-category-item:nth-child(even) {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-category-title {
+    font-size: 28px;
+    margin-top: 20px;
+  }
+  .menu-category-item__title__name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 32px;
+  }
+  .menu-category-item__description {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 28px;
+  }
+  .price {
+    font-size: 16px;
+  }
+  .menu-category-title:before,
+  .menu-category-title:after {
+    margin: 0 10px;
+  }
+
+  .category-button-panel {
+    width: 240px;
+  }
+}
+
+@media (max-width: 450px) {
+  .menu-category-title {
+    font-size: 22px;
+    margin-top: 10px;
+  }
+  .menu-category-item__title__name {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 28px;
+  }
+  .menu-category-item__description {
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 20px;
+  }
+  .price {
+    font-size: 14px;
+  }
+  .menu-category-title:before,
+  .menu-category-title:after {
+    margin: 0 5px;
+  }
+
+  .category-button-panel {
+    width: 200px;
+    font-size: 14px;
+  }
+}

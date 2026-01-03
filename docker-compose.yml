@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  react-app:
+    build: .
+    environment:
+      VIRTUAL_HOST: redllamajc.com
+      LETSENCRYPT_HOST: redllamajc.com
+      LETSENCRYPT_EMAIL: kevin.silva.095@gmail.com
+    expose:
+      - "80"
+
+    networks:
+      - nginx-proxy
+
+networks:
+  nginx-proxy:
+    external:
+      name: nginx-proxy_default

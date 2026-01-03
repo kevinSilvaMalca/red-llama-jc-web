@@ -1,0 +1,14 @@
+@import url('styles/variables.css');
+
+body {
+}
+#root {
+  /* max-width: 1440px; */
+  margin: 0 auto;
+  /* padding: 2rem; */
+  text-align: center;
+  background-color: var(--dark);
+  color: var(--white-full);
+  position: relative;
+  /* margin-bottom: 5rem; */
+}

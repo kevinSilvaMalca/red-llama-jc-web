@@ -1,0 +1,27 @@
+.fade-in {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 300ms ease-out;
+}
+
+.main-layout {
+  min-height: calc(100vh - 100px);
+  padding-top: 100px;
+  /* outline: 1px solid red; */
+}
+.main-layout.main-layout-home {
+  padding-top: 0;
+}
+
+@media (max-width: 768px) {
+  .main-layout {
+    padding-top: 300px;
+  }
+  .main-layout.main-layout-home {
+    padding-top: 0;
+  }
+}
