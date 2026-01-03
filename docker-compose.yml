@@ -1,6 +1,7 @@
 version: '3.8'
 services:
   react-app:
+    image: red-llama-jc-web:latest
     build: .
     environment:
       VIRTUAL_HOST: redllamajc.com
@@ -14,5 +15,4 @@ services:
 
 networks:
   nginx-proxy:
-    external:
-      name: nginx-proxy_default
+    external: true
