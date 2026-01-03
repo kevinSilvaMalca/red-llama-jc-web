@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/SplashScreen.css';
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/llama.svg';
 import PropTypes from 'prop-types';
 
 const SplashScreen = ({ onComplete, servicesLoaded }) => {

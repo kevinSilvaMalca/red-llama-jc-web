@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../styles/Header.css';
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/llama.svg';
 import facebook from '../assets/images/facebook.png';
 import instagram from '../assets/images/instagram.png';
 
